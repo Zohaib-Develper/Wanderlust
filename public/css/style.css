@@ -1,0 +1,116 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+.navbar-brand {
+  font-weight: bolder;
+  color: red !important;
+}
+
+/* 
+styling card */
+.card {
+  border: none !important;
+}
+.index-card-body {
+  padding: 0 !important;
+}
+.index-img {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 18rem;
+}
+
+.index-card-link {
+  text-decoration: none;
+}
+.index-card-link:hover {
+  opacity: 0.8;
+  color: white !important;
+}
+
+/* Show Styling */
+.show-img {
+  height: 30vh;
+}
+
+.review-card {
+  border: 1px solid rgb(205, 201, 201) !important;
+}
+
+.listing-image {
+  height: auto;
+  max-height: 60vh;
+}
+/* filtering Icons */
+
+/* Custom styles for the horizontal scrolling menu */
+.menu {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  padding: 10px 0; /* Adjust padding as needed */
+
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+}
+.menu::-webkit-scrollbar {
+  height: 8px; /* Height of the scrollbar */
+}
+.menu::-webkit-scrollbar-thumb {
+  background-color: #dce9f5; /* Color of the scrollbar */
+  border-radius: 10px; /* Rounded corners of the thumb */
+}
+.menu a {
+  display: inline-block;
+  padding: 8px 20px; /* Adjust padding as needed */
+  color: #605b5b; /* Link text color */
+  text-decoration: none; /* Remove underline */
+}
+.menu a:hover {
+  color: #1f1b1b;
+  border-bottom: 1px #251e1e solid;
+}
+
+.menu a i {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.menu a div {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+/* 
+.form-switch {
+  border: 1px solid #0a0909; 
+  border-radius: 1rem;
+
+  overflow: hidden; 
+  white-space: nowrap; 
+}
+
+.form-switch input {
+  font-size: 0.9rem;
+}
+
+.form-switch label {
+  font-size: 0.8rem;
+
+  color: black;
+} */
+
+#taxes {
+  display: none;
+}
+
+.switch-container {
+  margin-top: 0.8rem;
+  padding: 0.8rem 0;
+  padding-right: 1.4rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
