@@ -1,3 +1,4 @@
+const { isValidObjectId } = require("mongoose");
 const Listing = require("../models/Listing");
 
 module.exports.index = async (req, res) => {
@@ -23,18 +24,24 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.listingDetails = async (req, res) => {
   let { id } = req.params;
-  let listing = await Listing.findById(id)
-    .populate({
-      path: "reviews",
-      populate: {
-        path: "author",
-      },
-    })
-    .populate("owner");
-  if (!listing) {
+  if (isValidObjectId(id)) {
+    let listing = await Listing.findById(id)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "author",
+        },
+      })
+      .populate("owner");
+
+    if (!listing) {
+      req.flash("error", "Listing you requested for does not exist");
+      res.redirect("/listings");
+    } else res.render("listings/show.ejs", { listing });
+  } else {
     req.flash("error", "Listing you requested for does not exist");
     res.redirect("/listings");
-  } else res.render("listings/show.ejs", { listing });
+  }
 };
 
 module.exports.createListing = async (req, res, next) => {
