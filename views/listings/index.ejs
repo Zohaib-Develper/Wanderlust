@@ -69,17 +69,19 @@
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <%if(listings.length>0){%> <%for (let listing of listings){%>
 
-  <div class="card mt-3">
+  <div class="card mb-4">
     <a href="listings/<%=listing._id%>" class="index-card-link">
       <img
         src="<%= listing.image.url%>"
         class="card-img-top index-img"
         alt="..."
       />
+
       <div class="card-body index-card-body">
         <div class="card-text text-black">
           <b><%= listing.title %> </b><br />
-          PKR <%= listing.price.toLocaleString("ur-PK")%>
+
+          <i>PKR <%= listing.price.toLocaleString("ur-PK")%> night</i>
           <i id="taxes" class="taxes">+ 18% GST</i>
         </div>
       </div>
