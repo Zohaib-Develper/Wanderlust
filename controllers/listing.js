@@ -64,7 +64,7 @@ module.exports.updateListing = async (req, res) => {
   if (!req.body.listing) throw new ExpressError(400, "Values are missing");
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-  if (typeof req.file) {
+  if (req.file) {
     let url = req.file.path;
     let filename = req.file.filename;
     listing.image = { url, filename };
