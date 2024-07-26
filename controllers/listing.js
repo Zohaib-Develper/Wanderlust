@@ -25,8 +25,10 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.listingDetails = async (req, res) => {
   let { id } = req.params;
   if (isValidObjectId(id)) {
+    //Checking whether id is correct or not
     let listing = await Listing.findById(id)
       .populate({
+        //Populating reviews and their author as well as owner of listings
         path: "reviews",
         populate: {
           path: "author",
@@ -47,8 +49,8 @@ module.exports.listingDetails = async (req, res) => {
 module.exports.createListing = async (req, res, next) => {
   let newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-  let url = req.file.path;
-  let filename = req.file.filename;
+  let url = req.file.path; //Path from cloudinary
+  let filename = req.file.filename; //From cloudinary
   newListing.image = { url, filename };
   console.log(newListing);
 
@@ -72,6 +74,7 @@ module.exports.updateListing = async (req, res) => {
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
   if (req.file) {
+    //Updating if user enter a new image
     let url = req.file.path;
     let filename = req.file.filename;
     listing.image = { url, filename };

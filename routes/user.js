@@ -14,7 +14,8 @@ router
   .route("/login")
   .get(userControllers.renderLoginForm)
   .post(
-    saveUrl,
+    saveUrl, //passport.authenticate will reset the req.session in case of success so to save to URL from which
+    //user is sent to login page , i have used saveURL middleware to save URL to locals
     passport.authenticate("local", {
       failureRedirect: "/login",
       failureFlash: true,

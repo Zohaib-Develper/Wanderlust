@@ -1,7 +1,8 @@
 # Wanderlust
 
 This project is live at [Wanderlust](https://wanderlustapp.vercel.app)
-Welcome to **Wanderlust**, a feature-rich web application inspired by Airbnb website. This project showcases my skills in full-stack development using EJS, Bootstrap, Node.js, Express, and MongoDB. Wanderlust allows users to explore, manage, and review property listings, all within a dynamic and user-friendly interface.
+
+I am thrilled to share my latest project, **WanderLust**: a fully functional, responsive traveling website, inspired by Airbnb, designed to connect property owners with travelers. Users can effortlessly list their properties and find the perfect place to stay.
 
 ## Table of Contents
 

@@ -23,6 +23,8 @@ const listingSchema = Schema({
   category: String,
 });
 
+//TO delete all revivews of user if user is deleted
+//monogoose midlleware
 listingSchema.post("findOneAndDelete", async (listing) => {
   console.log(listing.reviews);
   await Review.deleteMany({ _id: { $in: listing.reviews } });

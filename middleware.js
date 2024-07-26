@@ -11,6 +11,7 @@ module.exports.isLoggedIn = (req, res, next) => {
   } else next();
 };
 
+//To save URL on locals because req.authenticate will reset req.session
 module.exports.saveUrl = (req, res, next) => {
   if (req.session.Url) {
     res.locals.Url = req.session.Url;
@@ -22,6 +23,7 @@ module.exports.isOwner = async (req, res, next) => {
   let { id } = req.params;
   let listing = await Listing.findById(id);
   if (!listing.owner.equals(res.locals.curUser._id)) {
+    //here we can use req.user._id also
     req.flash("error", "You are not the owner of this listing");
     return res.redirect(`/listings/${id}`);
   }

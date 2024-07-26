@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config(); //Using .env. Read .evn documentation for details
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -9,8 +9,8 @@ const listings = require("./routes/listing");
 const reviews = require("./routes/review");
 const users = require("./routes/user");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
-const flash = require("connect-flash");
+const MongoStore = require("connect-mongo"); //To save session info on mongo cloud
+const flash = require("connect-flash"); // flash middleware to use with session
 const User = require("./models/user");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -31,9 +31,10 @@ store.on("error", () => {
 });
 
 const sessionOptions = {
-  store,
-  secret: process.env.SECRET,
-  resave: false,
+  //This is specifying session options for express session
+  store, //For saving session info on mongostore rather than local storage
+  secret: process.env.SECRET, //secret for signed cookie (Session ID)
+  resave: false, //This is false because i do not want to update session if there is not any change in session
   saveUninitialized: true,
   cookie: {
     expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
@@ -48,7 +49,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
-app.use(session(sessionOptions));
+app.use(session(sessionOptions)); //Using express Sessions
 app.use(flash());
 
 app.use(passport.initialize()); //Initializes passport middleware
@@ -73,10 +74,11 @@ app.get("/", (req, res) => {
 });
 
 //flash
+//Saving some info on every request
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.curUser = req.user;
+  res.locals.curUser = req.user; // to make user info accessible to veiws files
   next();
 });
 

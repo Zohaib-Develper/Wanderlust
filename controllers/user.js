@@ -7,9 +7,8 @@ module.exports.renderSignup = (req, res) => {
 module.exports.signup = async (req, res) => {
   try {
     let { username, password, email } = req.body;
-    console.log(username, password, email);
     const user = new User({ username, email });
-    const registered = await User.register(user, password);
+    const registered = await User.register(user, password); //Passsword is regeserd
     //console.log(registered);
     req.flash("success", "User registered Successfully");
     res.redirect("/listings");
@@ -25,7 +24,7 @@ module.exports.renderLoginForm = (req, res) => {
 
 module.exports.login = (req, res) => {
   req.flash("success", "Welcome back");
-  let redirectUrl = res.locals.Url || "/listings";
+  let redirectUrl = res.locals.Url || "/listings"; //Used saved locally save url saved by "saveUrl" middleware if possible
   res.redirect(redirectUrl);
 };
 
